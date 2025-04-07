@@ -13,3 +13,8 @@ body {
     color-scheme: dark;
   }
 }
+
+body{
+  margin: auto;
+  text-align: center;
+}

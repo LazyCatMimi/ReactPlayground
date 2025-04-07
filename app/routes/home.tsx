@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
+import BadgeReveal from "../components/hex";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +10,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Welcome />;
+  return <>
+  {/* <Welcome /> */}
+  <h1>Testing</h1>
+  <BadgeReveal progress={100} />
+  </>;
 }
