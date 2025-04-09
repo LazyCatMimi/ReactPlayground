@@ -22,18 +22,18 @@ const triangleVisibility = progress => {
 
 
     // Path for the default hexagon shape
-    const defaultHex = "M227.5 16.8564L379.798 104.786C387.224 109.073 391.798 116.996 391.798 125.571V301.429C391.798 310.004 387.224 317.927 379.798 322.214L227.5 410.144C220.074 414.431 210.926 414.431 203.5 410.144L51.2016 322.214C43.776 317.927 39.2016 310.004 39.2016 301.43V125.571C39.2016 116.996 43.776 109.073 51.2016 104.786L203.5 16.8564C210.926 12.5692 220.074 12.5692 227.5 16.8564Z"
+    const defaultHex = "M226 13.8564L381.329 103.536C388.755 107.823 393.329 115.746 393.329 124.321V303.679C393.329 312.254 388.755 320.177 381.329 324.464L226 414.144C218.574 418.431 209.426 418.431 202 414.144L46.6706 324.464C39.2449 320.177 34.6706 312.254 34.6706 303.68V124.321C34.6706 115.746 39.2449 107.823 46.6706 103.536L202 13.8564C209.426 9.56922 218.574 9.56922 226 13.8564Z"
 
     // Paths for the triangles in the hexagon
-    const tri1path = 'M35.3827 108.585L215.846 4.39426L215.846 212.775L35.3827 108.585Z';
-    const tri2path = 'M34.1727 317.943L214.636 213.753L214.636 422.134L34.1727 317.943Z';
-    const tri3path = 'M216.873 212.453L397.336 108.262L397.336 316.643L216.873 212.453Z';
-    const tri4path = 'M217.5 4.86602L397.963 109.056L217.5 213.247L217.5 4.86602Z';
-    const tri5path = 'M217.5 213.866L397.963 318.056L217.5 422.247L217.5 213.866Z';
-    const tri6path = 'M35.4997 108.866L215.963 213.056L35.4997 317.247L35.4997 108.866Z';
+    const tri1path = 'M214.412 214.484L33.1211 319.227C35.776 323.828 39.6211 327.741 44.3789 330.49L199.035 419.846C203.793 422.595 209.102 423.969 214.412 423.969V214.484Z';
+    const tri2path = 'M214.411 214.484L36.6887 111.803L33.1197 109.742C30.4648 114.344 29 119.632 29 125.13V303.838C29 309.336 30.4648 314.625 33.1197 319.227L214.411 214.484Z';
+    const tri3path = 'M214.412 5C209.102 5 203.793 6.37372 199.035 9.12256L44.3789 98.4765C39.6211 101.225 35.776 105.14 33.1211 109.742L36.6902 111.803L214.412 214.484V5Z';
+    const tri4path = 'M214.41 214.484V423.969C219.72 423.969 225.03 422.595 229.788 419.846L384.443 330.49C389.202 327.741 393.046 323.828 395.701 319.227L214.41 214.484Z';
+    const tri5path = 'M214.41 214.484L395.701 319.227C398.356 314.625 399.821 309.336 399.821 303.838V125.13C399.821 119.632 398.356 114.344 395.701 109.742L392.132 111.803L214.41 214.484Z';
+    const tri6path = 'M214.41 5V214.484L392.132 111.803L395.701 109.742C393.046 105.14 389.202 101.225 384.443 98.4765L229.788 9.12256C225.03 6.37372 219.72 5 214.41 5Z';
   
     return (
-      <div className='w-[428px] h-[428px] center mx-auto'>
+      <div className={`w-[${width}px] h-[${height}px] center mx-auto`}>
         <svg viewBox={`0 0 ${width} ${height}`} xmlns='http://www.w3.org/2000/svg'>
           <defs>
             {/* Clip paths for masking image parts */}
@@ -96,27 +96,18 @@ const triangleVisibility = progress => {
             </pattern>
   
           {/* Image pieces revealed with progress */}
-          {t1 && (
-            <path d={tri1path} fill='url(#badgeImage)' />
-          )}
-          {t2 && (
-            <path d={tri2path} fill='url(#badgeImage)' />
-          )}
-          {t3 && (
-            <path d={tri3path}fill='url(#badgeImage)' />
-          )}
-          {t4 && (
-            <path d={tri4path}                                                                                                        fill='url(#badgeImage)' />
-          )}
-          {t5 && (
-            <path d={tri5path} fill='url(#badgeImage)' />
-          )}
-          {t6 && (
-            <path
-              d={tri6path}
-              fill='url(#badgeImage)'
-            />
-          )}
+          {progress < 100 ? (
+  <>
+    {t1 && <path d={tri1path} fill="url(#badgeImage)" />}
+    {t2 && <path d={tri2path} fill="url(#badgeImage)" />}
+    {t3 && <path d={tri3path} fill="url(#badgeImage)" />}
+    {t4 && <path d={tri4path} fill="url(#badgeImage)" />}
+    {t5 && <path d={tri5path} fill="url(#badgeImage)" />}
+    {t6 && <path d={tri6path} fill="url(#badgeImage)" />}
+  </>
+) : (
+  <path d={defaultHex} fill="url(#badgeImage)" stroke="#F59E0B" />
+)}
         </svg>
       </div>
     );

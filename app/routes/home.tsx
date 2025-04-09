@@ -13,7 +13,7 @@ export default function Home() {
   return <>
   {/* <Welcome /> */}
   <h1>Testing</h1>
-  <BadgeReveal progress={100} />
+  <BadgeReveal progress={50} />
   </>;
 }
 
