@@ -1,4 +1,9 @@
 
+// usage:
+// <BadgeReveal progress={50} />
+
+
+
 const triangleVisibility = progress => {
     // 6 triangles: 100% / 6 = ~16.66% per part
     return [
